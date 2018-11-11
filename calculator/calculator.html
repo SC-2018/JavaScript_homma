@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>電卓</title>
+</head>
+
+<body>
+  <input type="text" name="" id="disp" style="text-align: right; " disabled>
+  <input type="hidden" name="" id="hidden" value="">
+  <input type="hidden" name="" id="op" value="">
+  <table>
+    <tr>
+      <td><input type="button" name="" id="" value="C" onclick="operator(this)"></td>
+      <td><input type="button" name="" id="" value="±" onclick="operator(this)"></td>
+      <td><input type="button" name="" id="" value="÷" onclick="operator(this)"></td>
+      <td><input type="button" name="" id="" value="×" onclick="operator(this)"></td>
+    </tr>
+    <tr>
+      <td><input type="button" name="" id="" value="9" onclick="dispValue(this)"></td>
+      <td><input type="button" name="" id="" value="8" onclick="dispValue(this)"></td>
+      <td><input type="button" name="" id="" value="7" onclick="dispValue(this)"></td>
+      <td><input type="button" name="" id="" value="-" onclick="operator(this)"></td>
+    </tr>
+    <tr>
+      <td><input type="button" name="" id="" value="6" onclick="dispValue(this)"></td>
+      <td><input type="button" name="" id="" value="5" onclick="dispValue(this)"></td>
+      <td><input type="button" name="" id="" value="4" onclick="dispValue(this)"></td>
+      <td><input type="button" name="" id="" value="+" onclick="operator(this)"></td>
+    </tr>
+    <tr>
+      <td><input type="button" name="" id="" value="3" onclick="dispValue(this)"></td>
+      <td><input type="button" name="" id="" value="2" onclick="dispValue(this)"></td>
+      <td><input type="button" name="" id="" value="1" onclick="dispValue(this)"></td>
+      <td rowspan="2" style="text-align:center;"><input type="button" name="" id="" value="=" onclick="operator(this)"></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align:center;"><input type="button" name="" id="" value="0" onclick="dispValue(this)"></td>
+      <td><input type="button" name="" id="" value="." onclick="dispValue(this)"></td>
+    </tr>
+  </table>
+</body>
+
+</html>
+
+<script>
+  function dispValue(button) {
+    document.getElementById("disp").value = document.getElementById("disp").value + button.value;
+  };
+  function operator(button) {
+    switch (button.value) {
+      case "C":
+        document.getElementById("hidden").value = '';
+        document.getElementById("op").value = '';
+        document.getElementById("disp").value = '';
+        break;
+
+      case "±":
+        document.getElementById("disp").value = document.getElementById("disp").value * (-1);
+        break;
+
+      case '+':
+        if (document.getElementById("op").value == "") {
+          document.getElementById("op").value = button.value;
+          document.getElementById("hidden").value = document.getElementById("disp").value;
+          document.getElementById("disp").value = '';
+        }
+        break;
+
+      case '-':
+        if (document.getElementById("op").value == "") {
+          document.getElementById("op").value = button.value;
+          document.getElementById("hidden").value = document.getElementById("disp").value;
+          document.getElementById("disp").value = '';
+        }
+        break;
+
+      case '×':
+        if (document.getElementById("op").value == "") {
+          document.getElementById("op").value = button.value;
+          document.getElementById("hidden").value = document.getElementById("disp").value;
+          document.getElementById("disp").value = '';
+        }
+        break;
+
+      case '÷':
+        if (document.getElementById("op").value == "") {
+          document.getElementById("op").value = button.value;
+          document.getElementById("hidden").value = document.getElementById("disp").value;
+          document.getElementById("disp").value = '';
+        }
+        break;
+
+      case '=':
+        if (document.getElementById("op").value == '+') {
+          document.getElementById("disp").value =
+            Number(document.getElementById("hidden").value) +
+            Number(document.getElementById("disp").value);
+        } else if (document.getElementById("op").value == '-') {
+          document.getElementById("disp").value =
+            Number(document.getElementById("hidden").value) -
+            Number(document.getElementById("disp").value);
+        } else if (document.getElementById("op").value == '×') {
+          document.getElementById("disp").value =
+            Number(document.getElementById("hidden").value) *
+            Number(document.getElementById("disp").value);
+        } else if (document.getElementById("op").value == '÷') {
+          document.getElementById("disp").value =
+            Number(document.getElementById("hidden").value) /
+            Number(document.getElementById("disp").value);
+        }
+        document.getElementById("hidden").value = '';
+        document.getElementById("op").value = '';
+    }
+  };
+</script>
