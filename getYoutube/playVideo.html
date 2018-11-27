@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>test</title>
+</head>
+
+<body>
+  <select id="selectVideo"></select>
+  <input id="title">
+  <input id="url">
+  <button value="登録" onclick="save()">登録</button>
+  <a id="video" href="" target="video" onclick="changeVideo()">切り替え</a>
+  <iframe name="video" width="560" height="315" src="https://www.youtube.com/embed/5U8EPg-Rr2o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</body>
+
+</html>
+
+<script>
+  // 選択した動画に切り替え
+  function changeVideo() {
+    let ref = document.getElementById("selectVideo").value;
+    document.getElementById("video").href = "https://www.youtube.com/embed/" + ref;
+    document.getElementsByTagName("iframe").src = document.getElementById("video").href;
+  };
+
+  // jsonファイルから情報取得
+  httpObj = new XMLHttpRequest();
+  httpObj.open("get", "youtube.json", true);
+    httpObj.onload = function () {
+      var myData = JSON.parse(this.responseText);
+      var txt = "";
+      for (var i = 0; i < myData.length; i++) {
+        var option = document.createElement("option");
+        option.innerText = myData[i].name;
+        option.value = myData[i].value;
+        document.getElementById("selectVideo").appendChild(option);
+      }
+    }
+  httpObj.send(null);
+</script>
