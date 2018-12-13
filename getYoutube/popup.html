@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+  <meta charset="UTF-8">
+  <title>音楽プレイヤー</title>
+</head>
 <body>
   <!--backgroound.jsのイベントを呼ぶためのボタン-->
-  <input type="button" id="playButton">
+  <input type="text" id="localStorageKey">
+  <input type="text" id="localStorageValue">
+  <input type="button" id="recordButton" value="登録">
+
+  <select id="selectMusic"></select>
+  <input type="button" id="setButton" value="音楽セット">
+  <input type="button" id="playButton" value="再生">
+  <input type="button" id="pauseButton" value="一時停止">
+  <input type="button" id="reloadButton" value="リロード">
+  <input type="range" id="volumeBar" min="0" max="100">
+  <input type="range" id="seekBar" min="0.00" max="" step="0.01" value="0">
 </body>
 <script type="text/javascript" src="popup.js"></script>
+<link rel="stylesheet" type="text/css" href="popup.css">
 </html>
