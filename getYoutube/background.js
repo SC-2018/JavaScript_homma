@@ -2,17 +2,17 @@
 chrome.runtime.onMessage.addListener(
   function (request) {
     if (request.musicId)
-      bgSetMusic(request.musicId);
+      setMusic(request.musicId);
     else if (request.volume)
-      bgSetVolume(request.volume);
-    else
-      bgSetTime(request.time);
+      setVolume(request.volume);
+    else if (request.time)
+      seekTo(request.time);
   }
 );
 
 // youtubeを埋め込む
 var music;
-function bgSetMusic(musicId) {
+function setMusic(musicId) {
   music = musicId;
   var tag = document.createElement('script');
   tag.src = "https://www.youtube.com/iframe_api";
@@ -31,25 +31,32 @@ function onYouTubeIframeAPIReady() {
 }
 
 // 音楽の再生
-function bgPlayMusic() {
-  player.playVideo();
-  // 再生した動画の時間をpopup.jsに渡す
-  chrome.runtime.sendMessage({
-    "maxTime": player.getDuration()
-  });
+function playMusic() {
+    player.playVideo();
+    // 再生した音楽の情報をpopup.jsに渡す
+    musicInfo();
+}
+
+// 音楽の情報をpopup.jsに渡す
+function musicInfo() {
+    chrome.runtime.sendMessage({
+      "maxTime": player.getDuration(),
+      "currentTime": player.getCurrentTime(),
+      "currentVolume": player.getVolume(),
+    });
 }
 
 // 音楽の一時停止
-function bgPauseMusic() {
+function pauseMusic() {
   player.pauseVideo();
 }
 
 // 音量の設定
-function bgSetVolume(volume) {
+function setVolume(volume) {
   player.setVolume(volume);
 }
 
 // 再生時間の設定
-function bgSetTime(time) {
+function seekTo(time) {
   player.seekTo(time);
 }

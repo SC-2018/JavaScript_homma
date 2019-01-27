@@ -3,12 +3,36 @@
   appearance: none;
   background-color: #c7c7c7;
   height: 2px;
-  width: 100%;
+  width: 50%;
 }
 #volumeBar:focus, #volumeBar:active {
   outline: none;
 }
 #volumeBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  width: 12px;
+  height: 12px;
+  display: block;
+  background-color: #262626;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
+#seekBar {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #c7c7c7;
+  height: 2px;
+  width: 100%;
+}
+#seekBar:focus, #seekBar:active {
+  outline: none;
+}
+#seekBar::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   cursor: pointer;

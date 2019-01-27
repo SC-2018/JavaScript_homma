@@ -5,18 +5,22 @@
   <title>音楽プレイヤー</title>
 </head>
 <body>
-  <!--backgroound.jsのイベントを呼ぶためのボタン-->
+  <!--音楽をローカルストレージに登録-->
   <input type="text" id="localStorageKey">
   <input type="text" id="localStorageValue">
   <input type="button" id="recordButton" value="登録">
 
+  <!--登録した音楽を選択、再生するためにセット-->
   <select id="selectMusic"></select>
-  <input type="button" id="setButton" value="音楽セット">
-  <input type="button" id="playButton" value="再生">
-  <input type="button" id="pauseButton" value="一時停止">
-  <input type="button" id="reloadButton" value="リロード">
-  <input type="range" id="volumeBar" min="0" max="100">
+  <img src="img/musicSet.png" id="setIcon">
+
+  <!--backgroound.jsのイベントを呼ぶためのボタン-->
+  <img src="img/play.png" id="playIcon">
+  <img src="img/pause.png" id="pauseIcon" style="display: none">
+  <img src="img/reload.png" id="reloadIcon">
   <input type="range" id="seekBar" min="0.00" max="" step="0.01" value="0">
+  <img src="img/volume.png" id="volumeIcon" style="float: left;">
+  <input type="range" id="volumeBar" min="0" max="100" value="100">
 </body>
 <script type="text/javascript" src="popup.js"></script>
 <link rel="stylesheet" type="text/css" href="popup.css">
