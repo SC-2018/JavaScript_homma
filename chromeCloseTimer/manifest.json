@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+	"name": "クロームタイマー",
+	"version": "0.1",
+	"browser_action": {
+		"default_title": "クロームタイマー",
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"scripts": [
+			"background.js"
+		],
+		"persistent": false
+	},
+	"permissions": [
+		"tabs"
+	]
+}
