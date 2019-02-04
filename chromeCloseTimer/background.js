@@ -11,9 +11,10 @@ function closeTabsAll() {
 chrome.alarms.create('ChromeCloseTimer', { delayInMinutes: 1, periodInMinutes: 1 });
 
 // 1分ごとに時間を比較
-chrome.alarms.onAlarm.addListener(function (alarm) {
-  let currentTime = new Date().toLocaleTimeString();
-  if (alarm.name == 'ChromeCloseTimer' && localStorage.key(0) == currentTime) {
+chrome.alarms.onAlarm.addListener(function () {
+  let currentDateTime = new Date();
+  if (localStorage.getItem('closeTime') == (currentDateTime.getHours() + ":" + currentDateTime.getMinutes())) {
+    localStorage.removeItem("closeTime");
     closeTabsAll();
   }
 });

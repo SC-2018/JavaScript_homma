@@ -7,10 +7,10 @@ target.addEventListener('click', reset, false);
 
 // 入力した時間をローカルストレージへ保存する
 function recordToLocalStorage(time) {
-  if (document.getElementById("closeTime").value != null || localStorage.key(0) == null) {
+  if (document.getElementById("closeTime").value != "" && localStorage.key(0) == null) {
     localStorage.setItem("closeTime", document.getElementById("closeTime").value);
     document.getElementById("closeTime").value = null;
-  } else if (localStorage.key(0) != null)
+  } else if (document.getElementById("closeTime").value != "" && localStorage.key(0) != null)
     alert(localStorage.getItem('closeTime') + "にセットしてあります。")
   else
     alert("時間をセットしてください。");
@@ -35,3 +35,6 @@ function checkHasLocalStorage() {
 // ToDo
 // storageが存在しない場合の処理追加
 // onloadが動くようにする
+// resetの名前
+// 時分の0の処理
+// localStorage.key(0)以外の指定方法
