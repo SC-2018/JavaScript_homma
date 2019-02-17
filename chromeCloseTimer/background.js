@@ -1,9 +1,9 @@
 // アクティブなwindowを閉じる
 function closeTabsAll() {
-    chrome.tabs.query({ 'currentWindow': true }, function (tabs) {
-      for (let i = 0; i < tabs.length; i++)
-        chrome.tabs.remove(tabs[i].id);
-    });
+  chrome.tabs.query({ 'currentWindow': true }, function (tabs) {
+    for (let i = 0; i < tabs.length; i++) 
+      chrome.tabs.remove(tabs[i].id);
+  });
 }
 
 // タイマーの生成

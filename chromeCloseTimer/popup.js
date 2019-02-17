@@ -23,5 +23,3 @@ function reset() {
   if (localStorage.getItem('closeTime'))
     localStorage.removeItem("closeTime");
 }
-
-// 強制終了前にブラウザを閉じた場合の処理追加
